@@ -6,33 +6,58 @@
     <title>NoGood Timer | 專業魔方計時器官方下載</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00ffff; --bg: #0a0a0a; --card-bg: #161616; --text: #ffffff; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .container { width: 100%; max-width: 500px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 28px; border: 1px solid #333; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        :root { --primary: #00ffff; --text: #ffffff; }
         
-        h1 { font-size: 2.2rem; margin-bottom: 5px; color: var(--primary); letter-spacing: -1px; }
-        .desc { color: #888; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5; }
+        * { box-sizing: border-box; }
 
-        /* 截圖預覽區塊 */
-        .screenshot-container {
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 10px 0 20px 0;
-            margin-bottom: 20px;
-            scrollbar-width: none; /* Firefox */
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text);
+            overflow: hidden;
+            background: #000; /* 備用背景色 */
         }
-        .screenshot-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-        
-        .screenshot-container img {
-            width: 180px;
-            border-radius: 15px;
-            border: 1px solid #444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+
+        /* 背景圖片層：使用你的主頁截圖 */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/zHRWdSnc/main.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px) brightness(0.4); /* 模糊與變暗效果 */
+            transform: scale(1.1); /* 防止邊緣出現白邊 */
+            z-index: -1;
         }
-        .screenshot-container img:hover { transform: scale(1.05); }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            z-index: 1;
+        }
+
+        /* 毛玻璃卡片效果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: var(--primary); letter-spacing: -1.5px; }
+        .subtitle { color: #ccc; margin-bottom: 35px; font-size: 1rem; line-height: 1.5; }
 
         /* 下載按鈕 */
         .download-btn {
@@ -44,48 +69,66 @@
             color: #000;
             text-decoration: none;
             padding: 18px;
-            border-radius: 18px;
+            border-radius: 20px;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
-        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3); }
-        
-        .features { text-align: left; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 15px; }
-        .item { margin-bottom: 8px; font-size: 0.85rem; color: #bbb; display: flex; align-items: center; }
-        .item::before { content: "✓"; color: var(--primary); margin-right: 10px; font-weight: bold; }
-        
-        .footer { margin-top: 25px; font-size: 0.75rem; color: #444; }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+        }
+
+        /* 功能小圖示區 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
+        }
+        .feature-item {
+            font-size: 0.8rem;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-item::before { content: "✓"; color: var(--primary); font-weight: bold; }
+
+        .footer { margin-top: 35px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.3); }
     </style>
 </head>
 <body>
 
+    <div class="bg-image"></div>
+
     <div class="container">
-        <div class="card">
+        <div class="glass-card">
             <h1>NoGood Timer</h1>
-            <p class="desc">極簡、專業、全項目支持<br>為追求極限的魔方選手打造</p>
-            
-            <div class="screenshot-container">
-                <img src="https://i.ibb.co/zHRWdSnc/main.png" alt="主頁截圖">
-                <img src="https://i.ibb.co/9HGYCr1g/customize.png" alt="自定義截圖">
-            </div>
+            <p class="subtitle">極簡、專業、全項目支持<br>專為追求極限的選手打造</p>
 
             <a href="https://github.com/weien0408/nogoodtimer/releases/download/v.1.0.0/nogoodtimerv.1.apk" 
                download="NoGoodTimer.apk" 
                class="download-btn">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
                 立即下載 APK
             </a>
 
-            <div class="features">
-                <div class="item">WCA 全項目打亂邏輯 (含 Clock, Megaminx)</div>
-                <div class="item">高階魔方動作優化，符合比賽規範</div>
-                <div class="item">高度自定義：主題色、背景、字體大小</div>
-                <div class="item">完全無廣告，專注於每一次練習</div>
+            <div class="feature-grid">
+                <div class="feature-item">WCA 專業打亂</div>
+                <div class="feature-item">自定義背景圖</div>
+                <div class="feature-item">高階寬轉規範</div>
+                <div class="feature-item">完全無廣告</div>
             </div>
 
-            <div class="footer">版本 v1.0.0 | 由 weien0408 開發</div>
+            <div class="footer">
+                Version 1.0.0 | Created by weien0408
+            </div>
         </div>
     </div>
 
