@@ -3,134 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoGood Timer | 專業魔方計時器官方下載</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>NoGood Timer | 官方下載</title>
     <style>
         :root { --primary: #00ffff; --text: #ffffff; }
-        
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: var(--text);
-            overflow: hidden;
-            background: #000; /* 備用背景色 */
-        }
-
-        /* 背景圖片層：使用你的主頁截圖 */
-        .bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://i.ibb.co/zHRWdSnc/main.png');
-            background-size: cover;
-            background-position: center;
-            filter: blur(15px) brightness(0.4); /* 模糊與變暗效果 */
-            transform: scale(1.1); /* 防止邊緣出現白邊 */
-            z-index: -1;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 450px;
-            z-index: 1;
-        }
-
-        /* 毛玻璃卡片效果 */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 32px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: var(--primary); letter-spacing: -1.5px; }
-        .subtitle { color: #ccc; margin-bottom: 35px; font-size: 1rem; line-height: 1.5; }
-
-        /* 下載按鈕 */
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: var(--primary);
-            color: #000;
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-        }
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
-        }
-
-        /* 功能小圖示區 */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            text-align: left;
-        }
-        .feature-item {
-            font-size: 0.8rem;
-            color: #bbb;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .feature-item::before { content: "✓"; color: var(--primary); font-weight: bold; }
-
-        .footer { margin-top: 35px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.3); }
+        body { font-family: -apple-system, sans-serif; margin: 0; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
+        /* 使用你的主頁截圖當模糊背景 */
+        .bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://i.ibb.co/zHRWdSnc/main.png') center/cover; filter: blur(20px) brightness(0.3); z-index: -1; transform: scale(1.1); }
+        .card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px 20px; border-radius: 30px; text-align: center; width: 90%; max-width: 400px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        h1 { color: var(--primary); font-size: 2.2rem; margin: 0; letter-spacing: -1px; }
+        p.tagline { color: #ccc; margin-bottom: 30px; font-size: 0.9rem; }
+        .btn { display: block; padding: 16px; margin: 15px 0; border-radius: 16px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .android { background: var(--primary); color: #000; }
+        .ios { border: 2px solid var(--primary); color: var(--primary); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2); }
+        .footer { font-size: 0.7rem; color: #666; margin-top: 20px; line-height: 1.4; }
     </style>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class="card">
+        <h1>NoGood Timer</h1>
+        <p class="tagline">專為競速選手打造的專業計時器</p>
+        
+        <a href="https://github.com/weien0408/nogoodtimer/releases/download/v.1.0.0/nogoodtimerv.1.apk" class="btn android">下載 Android APK</a>
 
-    <div class="bg-image"></div>
-
-    <div class="container">
-        <div class="glass-card">
-            <h1>NoGood Timer</h1>
-            <p class="subtitle">極簡、專業、全項目支持<br>專為追求極限的選手打造</p>
-
-            <a href="https://github.com/weien0408/nogoodtimer/releases/download/v.1.0.0/nogoodtimerv.1.apk" 
-               download="NoGoodTimer.apk" 
-               class="download-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                立即下載 APK
-            </a>
-
-            <div class="feature-grid">
-                <div class="feature-item">WCA 專業打亂</div>
-                <div class="feature-item">自定義背景圖</div>
-                <div class="feature-item">高階寬轉規範</div>
-                <div class="feature-item">完全無廣告</div>
-            </div>
-
-            <div class="footer">
-                Version 1.0.0 | Created by weien0408
-            </div>
+        <a href="./web/index.html" class="btn ios">開啟 iOS Web 版</a>
+        
+        <div class="footer">
+            iOS 建議：進入網頁後點擊 Safari「分享」<br>選擇「加入主畫面」以獲得最佳體驗
         </div>
     </div>
-
 </body>
 </html>
